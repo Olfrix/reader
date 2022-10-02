@@ -4,7 +4,7 @@
 #include <iostream>
 
 namespace {
-const int SEEK_STEP = 1;
+const std::streamoff SEEK_STEP = 1;
 const char NEWLINE = '\n';
 // Magic number was found experimentally. Works good enough for both small
 // and large files. Lowering the size of chunk leads to smaller program

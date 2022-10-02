@@ -19,7 +19,7 @@ public:
     UniqueWordsCounter(UniqueWordsCounter&& other) = delete;
     UniqueWordsCounter& operator=(UniqueWordsCounter&& other) = delete;
 
-    std::int64_t CountUniqueWords();
+    std::size_t CountUniqueWords();
 
 private:
     void Process(std::string&& contents);

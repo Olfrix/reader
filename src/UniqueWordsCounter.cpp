@@ -7,7 +7,7 @@
 UniqueWordsCounter::UniqueWordsCounter(const std::filesystem::path& filename, const char delimiter)
     : reader_{filename, delimiter}, delimiter_{delimiter} {}
 
-std::int64_t UniqueWordsCounter::CountUniqueWords() {
+std::size_t UniqueWordsCounter::CountUniqueWords() {
     while (reader_.Good()) {
         try {
             std::string chunk = reader_.Read();
@@ -20,7 +20,7 @@ std::int64_t UniqueWordsCounter::CountUniqueWords() {
     }
     thread_pool_.WaitForAllTasksFinished();
 
-    return static_cast<std::int64_t>(result_.size());
+    return result_.size();
 }
 
 void UniqueWordsCounter::Process(std::string&& contents) {

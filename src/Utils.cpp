@@ -8,23 +8,23 @@ std::unordered_set<std::string_view> TokenizeStringIntoUniqueWords(std::string_v
     }
 
     std::unordered_set<std::string_view> unique_words;
-    const auto size = static_cast<int>(contents.size());
+    const std::size_t size = contents.size();
     // Ignore possible leading delimiters
-    int start = 0;
+    std::size_t start = 0;
     while (contents[start] == delimiter) {
         ++start;
     }
-    int index_left = start;
-    int index_right = start - 1;
+    auto index_left = start;
+    auto index_right = start - 1;
     bool is_consequent_delimiter = false;
-    for (int i = start; i < size; ++i) {
+    for (auto i = start; i < size; ++i) {
         if (contents[i] == delimiter && is_consequent_delimiter) {
             ++index_right;
         } else if (contents[i] == delimiter) {
             index_left = index_right;
             index_right = i;
-            int offset = index_left + 1;
-            int length = index_right - offset;
+            auto offset = index_left + 1;
+            auto length = index_right - offset;
 
             std::string_view word(contents.data() + offset, length);
             unique_words.insert(word);
